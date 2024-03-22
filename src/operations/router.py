@@ -1,4 +1,7 @@
+import time
+
 from fastapi import APIRouter, Depends, HTTPException, Query
+from fastapi_cache.decorator import cache
 from sqlalchemy import select, insert, func
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -11,6 +14,11 @@ router = APIRouter(
     tags=["Operation"]
 )
 
+@router.get("/long")
+@cache(expire=60)
+async def get_long_op():
+    time.sleep(2)
+    return "Много много данных, которые вычисляются сто лет"
 
 @router.get("/")
 async def get_specific_operations(operation_type: str,

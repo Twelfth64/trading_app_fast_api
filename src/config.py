@@ -10,6 +10,8 @@ class Settings(BaseSettings):
     DB_NAME: str
     COOKIE_SECRET: str
     PW_SECRET: str
+    SMTP_USER: str
+    SMTP_PASSWORD: str
 
     @property
     def DATABASE_URL_asyncpg(self):
