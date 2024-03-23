@@ -9,7 +9,7 @@ class OperationOrm(Base):
     __tablename__ = 'operation'
 
     id: Mapped[int] = mapped_column(primary_key=True)
-    quantity: Mapped[int]
+    quantity: Mapped[str]
     figi: Mapped[str]
     instrument_type: Mapped[str] = mapped_column(nullable=True)
     date: Mapped[datetime.datetime]
